@@ -130,3 +130,20 @@ class Solution:
         return None
 
 
+# 1.6 链表中倒数最后k个结点
+class Solution:
+    def FindKthToTail(self , pHead: ListNode, k: int) -> ListNode:
+        fast = pHead
+        slow = pHead
+        #快指针先行k步
+        for i in range(0,k):
+            if fast != None:
+                fast = fast.next
+            #达不到k步说明链表过短，没有倒数k
+            else:
+                return None
+        #快慢指针同步，快指针先到底，慢指针指向倒数第k个
+        while fast:
+            fast = fast.next
+            slow = slow.next
+        return slow
